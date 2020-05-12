@@ -11,7 +11,7 @@ const dbname = 'usersdb';
 server.use(express.static('dist'));
 
 // the URL to the DB will be loaded from an env variable or using the MongoDB Clour
-const dbroute = process.env.MONGODB_URL || `mongodb+srv://<USERNAME>:<PASSWORD>@users-bm6td.mongodb.net/test?retryWrites=true&w=majority`;
+const dbroute = process.env.MONGODB_URL || `mongodb+srv://erika:dorset@users-bm6td.mongodb.net/test?retryWrites=true&w=majority`;
 
 let db;
 
