@@ -16,43 +16,43 @@ class UserList extends Component {
     constructor(props) {
         super(props);
         // store the users array in the state
-        this.state = { users: [] };
+        this.state = { dishes: [] };
 
         //this binding is necessary to make `this` work in the callback
         //generally, if you refer to a method without () after it, such as onClick={this.handleClick}, you should bind that method
-        this.updateUsers = this.updateUsers.bind(this);
+        this.updateDishes = this.updateDishes.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
     }
 
     // fetch all user data from the server when the component mounts
     componentDidMount() {
-        this.updateUsers();
+        this.updateDishes();
     }
 
     //
-    updateUsers() {
-        // get the users API using axios GET request to the server 
-        axios.get('api/users')
+    updateDishes() {
+        // get the Dishes API using axios GET request to the server 
+        axios.get('api/dishes')
             .then(response => {
                 //store the response in the state
-                this.setState({ users: response.data });
+                this.setState({ dishes: response.data });
             })
             .catch(error => {
                 console.log(error);
             });
     }
 
-    handleDelete(userId) {
+    handleDelete(dishId) {
         // make a DELETE request to the server which will handle the removal of the user with the specific userId
         axios
-            .delete('api/users', {
+            .delete('api/dishes', {
                 data: {
-                    id: userId
+                    id: dishId
                 }
             })
             .then(response => {
                 //if the deletion was successful then re-render the list of users
-                this.updateUsers();
+                this.updateDishes();
             })
             .catch(error => {
                 console.log(error);
@@ -66,11 +66,13 @@ class UserList extends Component {
             <User
                 key={u._id}
                 id={u._id}
-                title={u.title}
-                first={u.first}
-                lastName={u.lastName}
-                image={u.picture}
-                quote={u.quote}
+                dishName={u.dishName}
+                dishCountry={u.dishCountry}
+                dishDescription={u.dishDescription}
+                dishPicture={u.dishPicture}
+                other={u.other}
+                
+            
                 //you must include the handleDelete method to use in child components
                 handleDelete={this.handleDelete}
             />
@@ -81,10 +83,10 @@ class UserList extends Component {
             <div className="is-fluid">
                 {/*Navigation bar*/}
                 <nav className="navbar">
-                    <h1 className="navbar-item title is-1 has-text-primary">List of Users</h1>
+                    <h1 className="navbar-item title is-1 has-text-primary">List of Dishes</h1>
                     {/*when this button is pressed, CreateUser component will be rendered by using React Router*/}
                     <Link to={'/create-user'} className="navbar-item navbar-end">
-                        <button className="button is-warning" type="button">Create new user</button>
+                        <button className="button is-warning" type="button">Create new dish</button>
                     </Link>
                 </nav>
                 <hr />

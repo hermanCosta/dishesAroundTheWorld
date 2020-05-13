@@ -12,11 +12,11 @@ class EditUser extends Component {
         // store the related to the user information into the state
         // these should match the user object from the API
         this.state = {
-            title: '',
-            first: '',
-            lastName: '',
-            quote: '',
-            picture: ''
+            dishName: '',
+            dishCountry: '',
+            dishDescription: '',
+            dishPicture: '',
+            other: '',
         };
 
         //this binding is necessary to make `this` work in the callback
@@ -27,17 +27,17 @@ class EditUser extends Component {
 
     // fetch the related user data
     componentDidMount() {
-        // get the users API and include the id which is passed via the URL and accessed via props
-        axios.get('/api/users/' + this.props.match.params.id)
+        // get the dishes API and include the id which is passed via the URL and accessed via props
+        axios.get('/api/dishes/' + this.props.match.params.id)
             .then(response => {
                 //on resonse set the state values to match empty state values set in the constructor
                 this.setState({
                     _id: response.data._id,
-                    title: response.data.title,
-                    first: response.data.first,
-                    lastName: response.data.lastName,
-                    quote: response.data.quote,
-                    picture: response.data.picture,
+                    dishName: response.data.dishName,
+                    dishCountry: response.data.dishCountry,
+                    dishDescription: response.data.dishDescription,
+                    dishPicture: response.data.dishPicture,
+                    other: response.data.other
                 });
             })
             .catch(error => {
@@ -59,7 +59,7 @@ class EditUser extends Component {
         event.preventDefault();
 
         // use axios to send a PUT request to the server which includes the updated state information
-        axios.put('/api/users', this.state)
+        axios.put('/api/dishes', this.state)
             //on success go to home
             .then(res => this.props.history.push('/'))
             .catch(error => {
@@ -73,7 +73,7 @@ class EditUser extends Component {
             <div className="is-fluid">
                 {/*on form submit call handleSubmit()*/}
                 <form onSubmit={this.handleSubmit}>
-                    <h2 className="title is-1 has-text-primary">Edit User</h2>
+                    <h2 className="title is-1 has-text-primary">Edit Dish</h2>
                     <hr />
                     {/*main container for input fields*/}
                     <div className="container">
@@ -81,36 +81,36 @@ class EditUser extends Component {
                         <div className="columns">
                             <div className="column is-half">
                                 <div className="field">
-                                    <label className="label"> Title: </label>
+                                    <label className="label"> Dish Name: </label>
                                     <div className="control">
-                                        <input className="input is-small" type="text" name="title" value={this.state.title} onChange={this.handleChange} id="form" />
+                                        <input className="input is-small" type="text" name="dishName" value={this.state.dishName} onChange={this.handleChange} id="form" />
                                     </div>
                                 </div>
                                 <div className="field">
-                                    <label className="label"> First Name: </label>
+                                    <label className="label"> Country: </label>
                                     <div className="control">
-                                        <input className="input is-small" type="text" name="first" value={this.state.first} onChange={this.handleChange} id="form" />
+                                        <input className="input is-small" type="text" name="dishCountry" value={this.state.dishCountry} onChange={this.handleChange} id="form" />
                                     </div>
                                 </div>
                                 <div className="field">
                                     <label className="label"> Picture: </label>
                                     <div className="control">
-                                        <input className="input is-small" type="text" name="picture" value={this.state.picture} onChange={this.handleChange} id="form" />
+                                        <input className="input is-small" type="text" name="dishPicture" value={this.state.dishPicture} onChange={this.handleChange} id="form" />
                                     </div>
                                 </div>
                             </div>
                             {/*SECOND COLUMN*/}
                             <div className="column">
                                 <div className="field">
-                                    <label className="label"> Last Name: </label>
+                                    <label className="label"> Description: </label>
                                     <div className="control">
-                                        <input className="input is-small" type="text" name="lastName" value={this.state.lastName} onChange={this.handleChange} id="form" />
+                                        <input className="input is-small" type="text" name="dishDescription" value={this.state.dishDescription} onChange={this.handleChange} id="form" />
                                     </div>
                                 </div>
                                 <div className="field">
-                                    <label className="label"> Quote: </label>
+                                    <label className="label"> Other: </label>
                                     <div className="control">
-                                        <input className="input is-small" type="text" name="quote" value={this.state.quote} onChange={this.handleChange} id="form" />
+                                        <input className="input is-small" type="text" name="other" value={this.state.other} onChange={this.handleChange} id="form" />
                                     </div>
                                 </div>
                             </div>
