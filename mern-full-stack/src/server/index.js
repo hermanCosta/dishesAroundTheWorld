@@ -30,7 +30,7 @@ server.use(bodyParser.json());
 
 // DEFINE ENDPOINTS
 
-// retrieve all user objects from DB
+// retrieve all dish objects from DB
 server.get('/api/dishes', (req, res) => {
   db.collection('dishes').find().toArray((err, result) => {
     if (err) throw err;
@@ -40,7 +40,7 @@ server.get('/api/dishes', (req, res) => {
   });
 });
 
-// retrieve user with specific ID from DB
+// retrieve dish with specific ID from DB
 server.get('/api/dishes/:id', (req, res) => {
   db.collection('dishes').findOne({_id: new ObjectID(req.params.id) }, (err, result) => {
     if (err) throw err;
@@ -50,7 +50,7 @@ server.get('/api/dishes/:id', (req, res) => {
   });
 });
 
-// delete user with specific ID from DB
+// delete dish with specific ID from DB
 server.delete('/api/dishes', (req, res) => {
   db.collection('dishes').deleteOne( {_id: new ObjectID(req.body.id) }, err => {
     if (err) return res.send(err);
@@ -60,7 +60,7 @@ server.delete('/api/dishes', (req, res) => {
   });
 });
 
-// create new user based on info supplied in request body
+// create new dish based on info supplied in request body
 server.post('/api/dishes', (req, res) => {
   db.collection('dishes').insertOne(req.body, (err, result) => {
     if (err) throw err;
@@ -70,13 +70,13 @@ server.post('/api/dishes', (req, res) => {
   });
 });
 
-// update user based on info supplied in request body
+// update dish based on info supplied in request body
 server.put('/api/dishes', (req, res) => {
-  // get the ID of the user to be updated
+  // get the ID of the dish to be updated
   const id  = req.body._id;
   // remove the ID so as not to overwrite it when updating
   delete req.body._id;
-  // find a user matching this ID and update their details
+  // find a dish matching this ID and update their details
   db.collection('dishes').updateOne( {_id: new ObjectID(id) }, {$set: req.body}, (err, result) => {
     if (err) throw err;
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import the Link component to handle React Router
 import { Link } from 'react-router-dom';
-import User from './User';
+import Dish from './Dish';
 //Axios is a lightweight HTTP client based on the $http service within Angular.js
 //Axios provides support for request and response interceptors, transformers and auto-conversion to JSON
 // Use "npm install axios" command to install
@@ -11,11 +11,11 @@ import './app.css';
 //MAKE SURE TO INSTALL USING npm install bulma
 import 'bulma/css/bulma.css';
 
-// this component will handle all elements in the users array
-class UserList extends Component {
+// this component will handle all elements in the dishs array
+class DishList extends Component {
     constructor(props) {
         super(props);
-        // store the users array in the state
+        // store the dishs array in the state
         this.state = { dishes: [] };
 
         //this binding is necessary to make `this` work in the callback
@@ -24,7 +24,7 @@ class UserList extends Component {
         this.handleDelete = this.handleDelete.bind(this);
     }
 
-    // fetch all user data from the server when the component mounts
+    // fetch all dish data from the server when the component mounts
     componentDidMount() {
         this.updateDishes();
     }
@@ -43,7 +43,7 @@ class UserList extends Component {
     }
 
     handleDelete(dishId) {
-        // make a DELETE request to the server which will handle the removal of the user with the specific userId
+        // make a DELETE request to the server which will handle the removal of the dish with the specific dishId
         axios
             .delete('api/dishes', {
                 data: {
@@ -51,7 +51,7 @@ class UserList extends Component {
                 }
             })
             .then(response => {
-                //if the deletion was successful then re-render the list of users
+                //if the deletion was successful then re-render the list of dishs
                 this.updateDishes();
             })
             .catch(error => {
@@ -60,10 +60,10 @@ class UserList extends Component {
     }
 
     render() {
-        // produce a User component for each user object
-        const userList = this.state.dishes.map(u => (
+        // produce a Dish component for each dish object
+        const dishList = this.state.dishes.map(u => (
             //map through each element in the array and set to the value received from the server
-            <User
+            <Dish
                 key={u._id}
                 id={u._id}
                 dishName={u.dishName}
@@ -78,22 +78,22 @@ class UserList extends Component {
             />
         ));
 
-        //return the list of users
+        //return the list of dishs
         return (
             <div className="is-fluid">
                 {/*Navigation bar*/}
                 <nav className="navbar">
                     <h1 className="navbar-item title is-1 has-text-primary">List of Dishes</h1>
-                    {/*when this button is pressed, CreateUser component will be rendered by using React Router*/}
-                    <Link to={'/create-user'} className="navbar-item navbar-end">
+                    {/*when this button is pressed, CreateDish component will be rendered by using React Router*/}
+                    <Link to={'/create-dish'} className="navbar-item navbar-end">
                         <button className="button is-warning" type="button">Create new dish</button>
                     </Link>
                 </nav>
                 <hr />
-                {/*USER LIST*/}
+                {/*DISH LIST*/}
                 <div>
                     <div className="columns is-multiline">
-                        {userList}
+                        {dishList}
                     </div>
                 </div>
                 {/*FOOTER*/}
@@ -108,4 +108,4 @@ class UserList extends Component {
     }
 }
 
-export default UserList;
+export default DishList;

@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 // Use "npm install axios" command to install
 import axios from 'axios';
 
-//Create User component that will create a new user card
-class CreateUser extends Component {
+//Create dish component that will create a new dish card
+class CreateDish extends Component {
     constructor(props) {
         super(props);
         // the form fields are stored in a state
@@ -37,7 +37,7 @@ class CreateUser extends Component {
         //preventDefault() is called on the event when it occurs to prevent a browser reload/refresh
         event.preventDefault();
 
-        //use axios to send a POST request to the server which includes the state information for the new user to be created
+        //use axios to send a POST request to the server which includes the state information for the new dish to be created
         axios.post('/api/dishes', this.state)
             //on success go to home
             .then(res => this.props.history.push('/'))
@@ -66,7 +66,7 @@ class CreateUser extends Component {
                                 </div>
                             </div>
                             <div className="field">
-                                <label className="label"> Country Name: </label>
+                                <label className="label"> Country: </label>
                                 <div className="control">
                                     <input className="input is-small" type="text" name="dishCountry" value={this.state.dishCountry} onChange={this.handleChange} id="form" />
                                 </div>
@@ -103,4 +103,4 @@ class CreateUser extends Component {
     }
 }
 
-export default CreateUser;
+export default CreateDish;

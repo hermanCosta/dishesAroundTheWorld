@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 // Use "npm install axios" command to install
 import axios from 'axios';
 
-//Edit User component that will edit the clicked on user with passed id
-class EditUser extends Component {
+//Edit Dish component that will edit the clicked on dish with passed id
+class EditDish extends Component {
     constructor(props) {
         super(props);
-        // store the related to the user information into the state
-        // these should match the user object from the API
+        // store the related to the Dish information into the state
+        // these should match the dish object from the API
         this.state = {
             dishName: '',
             dishCountry: '',
@@ -25,7 +25,7 @@ class EditUser extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    // fetch the related user data
+    // fetch the related dish data
     componentDidMount() {
         // get the dishes API and include the id which is passed via the URL and accessed via props
         axios.get('/api/dishes/' + this.props.match.params.id)
@@ -124,4 +124,4 @@ class EditUser extends Component {
     }
 }
 
-export default EditUser;
+export default EditDish;
