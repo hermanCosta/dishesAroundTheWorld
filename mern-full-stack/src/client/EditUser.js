@@ -16,7 +16,7 @@ class EditUser extends Component {
             dishCountry: '',
             dishDescription: '',
             dishPicture: '',
-            other: '',
+            other: ''
         };
 
         //this binding is necessary to make `this` work in the callback

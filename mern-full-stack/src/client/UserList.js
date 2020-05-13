@@ -61,7 +61,7 @@ class UserList extends Component {
 
     render() {
         // produce a User component for each user object
-        const userList = this.state.users.map(u => (
+        const userList = this.state.dishes.map(u => (
             //map through each element in the array and set to the value received from the server
             <User
                 key={u._id}
@@ -99,7 +99,7 @@ class UserList extends Component {
                 {/*FOOTER*/}
                 <footer className="footer has-background-primary">
                     <div className="content has-text-centered">
-                        <p className="has-text-white-bis"><strong>Random User API</strong> styled with Bulma.</p>
+                        <p className="has-text-white-bis"><strong>World Dishes</strong> styled with Bulma.</p>
                     </div>
                 </footer>
             </div>
