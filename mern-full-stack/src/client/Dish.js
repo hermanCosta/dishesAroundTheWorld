@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 class Dish extends React.Component {
   render() {
     return (
-      <div className="column is-2" style={{ padding: "20px" }}>
+      <div className="column is-3" style={{ padding: "10px" }}>
         <div className="card" style={{ borderRadius: "20px" }}>
           <div className="card-image">
             <figure className="image is-4by3">
@@ -17,7 +17,7 @@ class Dish extends React.Component {
           <div className="card-content">
             <div className="media">
               <div className="media-content">
-                <p className="head is-4 has-text-primary">{this.props.dishCountry}</p>
+                <p className="head is-3 has-text-primary">{this.props.dishCountry}</p>
                 <p className="title is-4 has-text-primary">{this.props.dishName}</p>
                 <hr/>
                 <p className="subtitle is-size-6">{this.props.dishDescription}</p>
