@@ -1,3 +1,4 @@
+//import Background from 'https://justflybusiness.co.uk/wp-content/uploads/2018/10/Mapof-world-5-national-dishes-to-try-from-around-the-world.jpg';
 import React, { Component } from 'react';
 //import the Link component to handle React Router
 import { Link } from 'react-router-dom';
@@ -11,12 +12,15 @@ import './app.css';
 //MAKE SURE TO INSTALL USING npm install bulma
 import 'bulma/css/bulma.css';
 
+
+
 // this component will handle all elements in the dishs array
 class DishList extends Component {
     constructor(props) {
         super(props);
         // store the dishs array in the state
         this.state = { dishes: [] };
+
 
         //this binding is necessary to make `this` work in the callback
         //generally, if you refer to a method without () after it, such as onClick={this.handleClick}, you should bind that method
@@ -82,8 +86,8 @@ class DishList extends Component {
         return (
             <div className="is-fluid">
                 {/*Navigation bar*/}
-                <nav className="navbar">
-                    <h1 className="navbar-item title is-1 has-text-primary">List of Dishes</h1>
+                <nav className="navbar has-text-centered">
+                    <h1 className="navbar-item title is-1 has-text-primary has-text-centered">Dishes Around the World</h1>
                     {/*when this button is pressed, CreateDish component will be rendered by using React Router*/}
                     <Link to={'/create-dish'} className="navbar-item navbar-end">
                         <button className="button is-warning" type="button">Create new dish</button>
@@ -97,7 +101,7 @@ class DishList extends Component {
                     </div>
                 </div>
                 {/*FOOTER*/}
-                <footer className="footer has-background-primary">
+                <footer className="footer">
                     <div className="content has-text-centered">
                         <p className="has-text-white-bis"><strong>World Dishes</strong> styled with Bulma.</p>
                     </div>
