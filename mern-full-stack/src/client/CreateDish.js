@@ -11,11 +11,20 @@ class CreateDish extends Component {
         super(props);
         // the form fields are stored in a state
         this.state = { 
+            dishName: null,
+            dishCountry: null,
+            dishDescription: null,
+            dishPicture: null,
+            other: null,
+
+            errors: {
             dishName: '',
             dishCountry: '',
             dishDescription: '',
             dishPicture: '',
-            other: ''
+            other: '',
+            }
+        
         };
 
         //this binding is necessary to make `this` work in the callback
@@ -26,25 +35,53 @@ class CreateDish extends Component {
 
     //once the input boxes are changed, update the state to match the value
     handleChange(event) {
-        //name of the input boxes must match the property names in the state
-        const name = event.target.name;
-        const value = event.target.value;
+       
+        // name of the input boxes must match the property names in the state
+        // const name = event.target.name;
+        // const value = event.target.value;
+        
+        const { name, value } = event.target;
+        let errors = this.state.errors;
 
-        this.setState({ [name]: value });
+
+        switch (name) {
+        case 'fullName': 
+            errors.dishName = 
+             value.length < 5
+             ? 'Full Name must be 5 characters long!'
+             : '';
+        break;
+        }
+
+      this.setState({errors, [name]: value}, ()=> {
+      console.log(errors)
+     })
+        
+    
     }
 
     handleSubmit(event) {
+        
         //preventDefault() is called on the event when it occurs to prevent a browser reload/refresh
         event.preventDefault();
-
+        
+        
         //use axios to send a POST request to the server which includes the state information for the new dish to be created
         axios.post('/api/dishes', this.state)
             //on success go to home
             .then(res => this.props.history.push('/'))
             .catch(error => {
+                
                 console.log(error);
             });
+        
     }
+
+    canBeSubmitted() {
+    const errors = validate(this.state.dishName, this.state.dishCountry, this.state.dishPicture, this.state.dishDescription);
+    const isDisabled = Object.keys(errors).some(x => errors[x]);
+    return !isDisabled;
+  }
 
     render() {
         // remember that the name of the input fields should match the state
@@ -62,7 +99,7 @@ class CreateDish extends Component {
                             <div className="field">
                                 <label className="label"> Dish Name: </label>
                                 <div className="control">
-                                    <input className="input is-small" type="text" name="dishName" value={this.state.dishName} onChange={this.handleChange} id="form" />
+                                    <input className="input is-small" type="text is-small" name="dishName" value={this.state.dishName} onChange={this.handleChange} id="form" />
                                 </div>
                             </div>
                             <div className="field">
