@@ -99,19 +99,19 @@ class CreateDish extends Component {
                             <div className="field">
                                 <label className="label"> Dish Name: </label>
                                 <div className="control">
-                                    <input className="input is-small" type="text is-small" name="dishName" value={this.state.dishName} onChange={this.handleChange} id="form" />
+                                    <input className="input is-small is-rounded" type="text is-small" name="dishName" value={this.state.dishName} onChange={this.handleChange} id="form" />
                                 </div>
                             </div>
                             <div className="field">
                                 <label className="label"> Country: </label>
                                 <div className="control">
-                                    <input className="input is-small" type="text" name="dishCountry" value={this.state.dishCountry} onChange={this.handleChange} id="form" />
+                                    <input className="input is-small is-rounded" type="text" name="dishCountry" value={this.state.dishCountry} onChange={this.handleChange} id="form" />
                                 </div>
                             </div>
                              <div className="field">
                                 <label className="label"> Picture: </label>
                                 <div className="control">
-                                    <input className="input is-small" type="text" name="dishPicture" value={this.state.dishPicture} onChange={this.handleChange} id="form" />
+                                    <input className="input is-small is rounded" type="text" name="dishPicture" value={this.state.dishPicture} onChange={this.handleChange} id="form" />
                                 </div>
                             </div>
                         </div>
@@ -120,19 +120,19 @@ class CreateDish extends Component {
                             <div className="field">
                                 <label className="label"> Description: </label>
                                 <div className="control">
-                                    <input className="input is-small" type="text" name="dishDescription" value={this.state.dishDescription} onChange={this.handleChange} id="form" />
+                                    <input className="input is-small is-rounded" type="text" name="dishDescription" value={this.state.dishDescription} onChange={this.handleChange} id="form" />
                                 </div>
                             </div>
                             <div className="field">
                                 <label className="label"> Other: </label>
                                 <div className="control">
-                                    <input className="input is-small" type="text" name="other" value={this.state.other} onChange={this.handleChange} id="form" />
+                                    <input className="input is-small is-rounded" type="text" name="other" value={this.state.other} onChange={this.handleChange} id="form" />
                                 </div>
                             </div>
                         </div>
                     </div>
                     {/*SUBMIT BUTTON*/}
-                    <input className="button is-primary" type="submit" value="Submit" />
+                    <input className="button is-primary is-rounded" type="submit" value="Submit" />
                     </div>
                 </form>
             </div>
