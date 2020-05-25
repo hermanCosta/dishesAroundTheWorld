@@ -5,6 +5,13 @@ import { Link } from 'react-router-dom';
 
 // define one single dish card component
 class Dish extends React.Component {
+
+    handleClick = (id) => () => {
+    alert("clicked")
+    console.log("Hello, your ticket number is", id)
+};
+
+
   render() {
     return (
       <div className="column is-3" style={{ padding: "10px" }}>
@@ -31,7 +38,7 @@ class Dish extends React.Component {
                   Edit 
                   </button>
                 </Link>
-                <button className="button is-info is-primary is-rounded" type="button">
+                <button className="button is-info is-primary is-rounded" type="button" onClick={() => this.props.handleClick(this.props.id)}>
                   Recipe 
                   </button>
               </div>

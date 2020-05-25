@@ -68,12 +68,6 @@ class CreateDish extends Component {
         
     }
 
-    canBeSubmitted() {
-    const errors = validate(this.state.dishName, this.state.dishCountry, this.state.dishPicture, this.state.dishDescription);
-    const isDisabled = Object.keys(errors).some(x => errors[x]);
-    return !isDisabled;
-  }
-
     render() {
         // remember that the name of the input fields should match the state
         return (
@@ -111,7 +105,7 @@ class CreateDish extends Component {
                             <div className="field">
                                 <label className="label has-text-primary"> Description: </label>
                                 <div className="control">
-                                    <input className="input is-small is-rounded" type="text" name="dishDescription" value={this.state.dishDescription} onChange={this.handleChange} id="form" />
+                                    <input className="input is-small is-rounded" maxLength="120" type="text" name="dishDescription" value={this.state.dishDescription} onChange={this.handleChange} id="form" />
                                 </div>
                             </div>
                             <div className="field">
@@ -123,7 +117,7 @@ class CreateDish extends Component {
                         </div>
                     </div>
                     {/*SUBMIT BUTTON*/}
-                    <input className="button is-primary is-rounded is-focused" type="submit" value="Submit" />
+                    <input className="button is-primary is-rounded" type="submit" value="Submit" />
                     </div>
                 </form>
             </div>

@@ -87,7 +87,7 @@ class DishList extends Component {
             <div className="is-fluid">
                 {/*Navigation bar*/}
                 <nav className="navbar has-text-centered">
-                    <h1 className="navbar-item title is-1 has-text-primary has-text-centered">Dishes Around the World</h1>
+                    <h1 className="navbar-item title is-1 has-text-primary">Dishes Around the World</h1>
                     {/*when this button is pressed, CreateDish component will be rendered by using React Router*/}
                     <Link to={'/create-dish'} className="navbar-item navbar-end">
                         <button className="button is-warning" type="button">Create new dish</button>
