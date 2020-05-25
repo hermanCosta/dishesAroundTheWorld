@@ -16,7 +16,7 @@ class EditDish extends Component {
             dishCountry: '',
             dishDescription: '',
             dishPicture: '',
-            other: ''
+            recipeLink: ''
         };
 
         //this binding is necessary to make `this` work in the callback
@@ -37,7 +37,7 @@ class EditDish extends Component {
                     dishCountry: response.data.dishCountry,
                     dishDescription: response.data.dishDescription,
                     dishPicture: response.data.dishPicture,
-                    other: response.data.other
+                    recipeLink: response.data.recipeLink
                 });
             })
             .catch(error => {
@@ -81,42 +81,42 @@ class EditDish extends Component {
                         <div className="columns">
                             <div className="column is-half">
                                 <div className="field">
-                                    <label className="label"> Dish Name: </label>
+                                    <label className="label has-text-primary"> Dish Name: </label>
                                     <div className="control">
-                                        <input className="input is-small" type="text" name="dishName" value={this.state.dishName} onChange={this.handleChange} id="form" />
+                                        <input className="input is-small is-rounded" type="text" name="dishName" value={this.state.dishName} onChange={this.handleChange} id="form" />
                                     </div>
                                 </div>
                                 <div className="field">
-                                    <label className="label"> Country: </label>
+                                    <label className="label has-text-primary"> Country: </label>
                                     <div className="control">
-                                        <input className="input is-small" type="text" name="dishCountry" value={this.state.dishCountry} onChange={this.handleChange} id="form" />
+                                        <input className="input is-small is-rounded" type="text" name="dishCountry" value={this.state.dishCountry} onChange={this.handleChange} id="form" />
                                     </div>
                                 </div>
                                 <div className="field">
-                                    <label className="label"> Picture: </label>
+                                    <label className="label has-text-primary"> Picture: </label>
                                     <div className="control">
-                                        <input className="input is-small" type="text" name="dishPicture" value={this.state.dishPicture} onChange={this.handleChange} id="form" />
+                                        <input className="input is-small is-rounded" type="text" name="dishPicture" value={this.state.dishPicture} onChange={this.handleChange} id="form" />
                                     </div>
                                 </div>
                             </div>
                             {/*SECOND COLUMN*/}
                             <div className="column">
                                 <div className="field">
-                                    <label className="label"> Description: </label>
+                                    <label className="label has-text-primary"> Description: </label>
                                     <div className="control">
-                                        <input className="input is-small" type="text" name="dishDescription" value={this.state.dishDescription} onChange={this.handleChange} id="form" />
+                                        <input className="input is-small is-rounded" type="text" name="dishDescription" value={this.state.dishDescription} onChange={this.handleChange} id="form" />
                                     </div>
                                 </div>
                                 <div className="field">
-                                    <label className="label"> Other: </label>
+                                    <label className="label has-text-primary"> Recipe Link: </label>
                                     <div className="control">
-                                        <input className="input is-small" type="text" name="other" value={this.state.other} onChange={this.handleChange} id="form" />
+                                        <input className="input is-small is-rounded" type="text" name="recipeLink" value={this.state.recipeLink} onChange={this.handleChange} id="form" />
                                     </div>
                                 </div>
                             </div>
                         </div>
                         {/*SUBMIT BUTTON*/}
-                        <input className="button is-primary" type="submit" value="Submit" />
+                        <input className="button is-primary is-rounded" type="submit" value="Save changes" />
                     </div>
                 </form>
             </div>

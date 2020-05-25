@@ -74,7 +74,7 @@ class DishList extends Component {
                 dishCountry={u.dishCountry}
                 dishDescription={u.dishDescription}
                 dishPicture={u.dishPicture}
-                other={u.other}
+                recipeLink={u.recipeLink}
                 
             
                 //you must include the handleDelete method to use in child components

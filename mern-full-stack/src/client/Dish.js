@@ -18,7 +18,7 @@ class Dish extends React.Component {
             <div className="media">
               <div className="media-content">
                 <p className="head is-3 has-text-black">{this.props.dishCountry}</p>
-                <p className="title is-4 has-text-primary">{this.props.dishName}</p>
+                <p className="title is-4">{this.props.dishName}</p>
                 <hr/>
                 <p className="subtitle is-size-6">{this.props.dishDescription}</p>
                 {/*delete the prop with requested id from the function invoked in the parent component*/}
@@ -28,9 +28,12 @@ class Dish extends React.Component {
                 {/*load the EditDish component via React Router and send the id over to the EditDish component*/}
                 <Link to={`/edit-dish/${this.props.id}`}>
                   <button className="button is-primary is-rounded" type="button">
-                  Edit
+                  Edit 
                   </button>
                 </Link>
+                <button className="button is-info is-primary is-rounded" type="button">
+                  Recipe 
+                  </button>
               </div>
             </div>
           </div>

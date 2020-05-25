@@ -11,20 +11,11 @@ class CreateDish extends Component {
         super(props);
         // the form fields are stored in a state
         this.state = { 
-            dishName: null,
-            dishCountry: null,
-            dishDescription: null,
-            dishPicture: null,
-            other: null,
-
-            errors: {
             dishName: '',
             dishCountry: '',
             dishDescription: '',
             dishPicture: '',
-            other: '',
-            }
-        
+            recipeLink: '',
         };
 
         //this binding is necessary to make `this` work in the callback
@@ -124,15 +115,15 @@ class CreateDish extends Component {
                                 </div>
                             </div>
                             <div className="field">
-                                <label className="label has-text-primary"> Other: </label>
+                                <label className="label has-text-primary"> Recipe Link: </label>
                                 <div className="control">
-                                    <input className="input is-small is-rounded" type="text" name="other" value={this.state.other} onChange={this.handleChange} id="form" />
+                                    <input className="input is-small is-rounded" type="text" name="recipeLink" value={this.state.recipeLink} onChange={this.handleChange} id="form" />
                                 </div>
                             </div>
                         </div>
                     </div>
                     {/*SUBMIT BUTTON*/}
-                    <input className="button is-primary is-rounded" type="submit" value="Submit" />
+                    <input className="button is-primary is-rounded is-focused" type="submit" value="Submit" />
                     </div>
                 </form>
             </div>
