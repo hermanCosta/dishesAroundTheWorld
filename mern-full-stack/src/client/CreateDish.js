@@ -34,29 +34,11 @@ class CreateDish extends Component {
     handleChange(event) {
        
         // name of the input boxes must match the property names in the state
-        // const name = event.target.name;
-        // const value = event.target.value;
-        
-        const { name, value } = event.target;
-        let errors = this.state.errors;
-
-
-        switch (name) {
-        case 'fullName': 
-            errors.dishName = 
-             value.length < 5
-             ? 'Full Name must be 5 characters long!'
-             : '';
-        break;
-        }
-
-      this.setState({errors, [name]: value}, ()=> {
-      console.log(errors)
-     })
-        
-    
+        const name = event.target.name;
+        const value = event.target.value;    
     }
 
+    //check if inputs are empty and display message to the user
     validate = () => {
             let nameError = '';
             let countryError = '';
@@ -93,9 +75,11 @@ class CreateDish extends Component {
         //preventDefault() is called on the event when it occurs to prevent a browser reload/refresh
         event.preventDefault();
         
+        //if inputs are not empty, 
+        //use axios to send a POST request to the server which includes the state information for the new dish to be created
         const isValid = this.validate();
         if(isValid) {
-        //use axios to send a POST request to the server which includes the state information for the new dish to be created
+
         axios.post('/api/dishes', this.state)
             //on success go to home
             .then(res => this.props.history.push('/'))

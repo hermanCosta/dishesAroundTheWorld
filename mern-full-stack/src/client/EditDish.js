@@ -93,8 +93,8 @@ class EditDish extends Component {
     handleSubmit(event) {
         //preventDefault() is called on the event when it occurs to prevent a browser reload/refresh
         event.preventDefault();
+
         const isValid = this.validate();
-       
         if(isValid) {
         // use axios to send a PUT request to the server which includes the updated state information
         axios.put('/api/dishes', this.state)
