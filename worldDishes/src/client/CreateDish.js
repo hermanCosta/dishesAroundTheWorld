@@ -36,6 +36,8 @@ class CreateDish extends Component {
         // name of the input boxes must match the property names in the state
         const name = event.target.name;
         const value = event.target.value;    
+
+        this.setState({ [name]: value });
     }
 
     //check if inputs are empty and display message to the user
@@ -107,7 +109,7 @@ class CreateDish extends Component {
                             <div className="field">
                                 <label className="label has-text-primary"> Dish Name: </label>
                                 <div className="control">
-                                    <input className="input is-small is-rounded" type="text is-small" name="dishName" value={this.state.dishName} onChange={this.handleChange} id="form" />
+                                    <input className="input is-small is-rounded" type="text is-small has-color-black" name="dishName" value={this.state.dishName} onChange={this.handleChange} id="form" />
                                      <div style={{color: "red"}}>{this.state.nameError}</div>
                                 </div> 
                             </div>
